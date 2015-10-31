@@ -14,7 +14,7 @@ const Styles = React.StyleSheet.create({
 class reactNativeExampleApp extends React.Component {
     render(){
         return React.createElement(React.Text, {
-            style: style.text
+            style: Styles.text
         }, "Hello World")
     }
 }
