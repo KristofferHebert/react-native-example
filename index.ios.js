@@ -2,6 +2,8 @@
 
 import React from 'react-native'
 
+// https://facebook.github.io/react-native/docs/geolocation.html#content
+
 const Styles = React.StyleSheet.create({
     text : {
         color: 'black',
@@ -10,6 +12,19 @@ const Styles = React.StyleSheet.create({
         margin: 80
     }
 })
+
+class GeoLocate extends React.Component {
+    watchId: (null, ?number),
+    getIntialState(){
+        return {
+            initialPostion: 'unknown',
+            lastPostion: 'unknown'
+        }
+    }
+    componentDidMount(){
+
+    }
+}
 
 class reactNativeExampleApp extends React.Component {
     render(){
