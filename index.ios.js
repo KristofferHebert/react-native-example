@@ -14,15 +14,17 @@ const Styles = React.StyleSheet.create({
 })
 
 class GeoLocate extends React.Component {
-    watchId: (null, ?number),
+    watchId: null,
     getIntialState(){
+
+	// set initial cordinate values
         return {
             initialPostion: 'unknown',
             lastPostion: 'unknown'
         }
     }
     componentDidMount(){
-
+	// fetch data and update state
     }
 }
 
