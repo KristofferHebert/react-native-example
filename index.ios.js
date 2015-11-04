@@ -1,6 +1,7 @@
 'use strict'
 
 import React from 'react-native'
+let {View, Text} = React
 
 // https://facebook.github.io/react-native/docs/geolocation.html#content
 
@@ -21,11 +22,11 @@ const GeoLocateSettings = {
 
 let GeoLocate = React.createClass({
 	watchID: false,
-	getIntialState() {
+	getInitialState() {
 		// set initial cordinate values
 		return {
-			initialPostion: 'unknown',
-			lastPostion: 'unknown'
+			initialPosition: 'unknown',
+			lastPosition: 'unknown'
 		}
 	},
 	componentDidMount() {
@@ -35,39 +36,30 @@ let GeoLocate = React.createClass({
 				initialPosition
 			}), (error) => alert(error.message),
 			GeoLocateSettings)
-		this.watchID = navigator.geolocation.watchPosition((lastPostion) => {
+		this.watchID = navigator.geolocation.watchPosition((lastPosition) => {
 			this.setState({
-				lastPostion
+				lastPosition
 			})
 		})
 	},
-	componentWillUnMount() {
+	componentWillUnmount() {
 		navigator.geolocation.clearWatch(this.watchID)
 	},
 	render() {
-		return ( <View>
-			<Text>
-			<Text style = {
-				styles.title
-			}> Initial position: </Text> {
-				JSON.stringify(this.state.initialPosition)
-			}</Text><Text>
-			<Text style = {
-				styles.title
-			}> Current position: </Text> {
-				JSON.stringify(this.state.lastPosition)
-			}</Text> </View>
+		return (
+            <View>
+    			<Text style={Styles.text}> Initial position: {JSON.stringify(this.state.initialPosition)}</Text>
+    			<Text style={Styles.text}> Current position: {JSON.stringify(this.state.lastPosition)}</Text>
+    		</View>
 		)
 	}
 })
 
 let reactNativeExampleApp = React.createClass({
 	render() {
-		return (
-            <GeoLocate />
-        )
+		return (<GeoLocate />)
 	}
-}
+})
 
 React.AppRegistry.registerComponent('reactNativeExample', () => {
 	return reactNativeExampleApp
